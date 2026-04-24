@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1887: Noli Me Tangere Published | José Rizal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #070b16;
+    --panel: rgba(255, 255, 255, 0.08);
+    --panel-strong: rgba(255, 255, 255, 0.14);
+    --gold: #f5c242;
+    --text: #eef2ff;
+    --muted: #b8c2d3;
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(rgba(20, 12, 6, 0.22), rgba(20, 12, 6, 0.22)),
+                url('jose.png') center 30%/cover no-repeat fixed;
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.8;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1200px, calc(100% - clamp(20px, 4vw, 40px)));
+    margin: 0 auto;
+}
+
+header {
+    position: relative;
+    min-height: 100vh;
+    background: transparent;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 12% 22%, rgba(245,194,66,0.14), transparent 18%),
+                radial-gradient(circle at 85% 60%, rgba(225, 210, 168, 0.06), transparent 20%);
+    pointer-events: none;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    inset: -20% 0 -20% 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 20%);
+    opacity: 0.35;
+    transform: translateX(-40%);
+    pointer-events: none;
+    animation: floatLight 18s linear infinite;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(12px, 2vw, 18px) clamp(16px, 3vw, 40px);
+    z-index: 20;
+    background: none;
+    backdrop-filter: none;
+}
+
+.navbar .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-shadow: 0 0 18px rgba(245,194,66,0.32);
+}
+
+.nav-links {
+    display: flex;
+    gap: clamp(16px, 2vw, 28px);
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: rgba(236, 241, 255, 0.92);
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    position: relative;
+    transition: color 0.25s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(255,255,255,0.12);
+}
+
+.menu-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 999px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle span + span {
+    margin-top: 5px;
+}
+
+.menu-toggle.open span:first-child {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.hero-content {
+    min-height: calc(100vh - clamp(40px, 8vw, 112px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(60px, 10vw, 120px) clamp(16px, 3vw, 24px) clamp(40px, 8vw, 60px);
+    position: relative;
+    z-index: 1;
+    border-radius: 24px;
+    box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+}
+
+.hero-copy {
+    max-width: 720px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeInUp 0.9s ease both 0.2s;
+}
+
+.hero-copy h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 5.5rem);
+    color: var(--gold);
+    margin-bottom: clamp(12px, 2vw, 18px);
+    line-height: 0.95;
+    text-shadow: 0 0 18px rgba(245,194,66,0.18), 0 0 32px rgba(245,194,66,0.08);
+}
+
+.eyebrow {
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+    color: rgba(245,194,66,0.9);
+    margin-bottom: clamp(12px, 2vw, 18px);
+}
+
+.hero-copy p {
+    color: var(--text);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    margin-bottom: clamp(18px, 3vw, 28px);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.9s ease both 0.35s;
+}
+
+.cta-group {
+    display: inline-flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.9s ease both 0.5s;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(12px, 1.5vw, 14px) clamp(24px, 4vw, 30px);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #f5c242, #e3a63d);
+    color: #08101e;
+    box-shadow: 0 16px 30px rgba(245,194,66,0.18);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(245, 194, 66, 0.35);
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 42px rgba(245, 194, 66, 0.18);
+}
+
+.section {
+    padding: clamp(50px, 10vw, 90px) 0;
+    scroll-margin-top: 100px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.9s ease both;
+    position: relative;
+}
+
+.section:nth-of-type(2) {
+    animation-delay: 0.1s;
+}
+
+.section:nth-of-type(3) {
+    animation-delay: 0.2s;
+}
+
+.section:nth-of-type(4) {
+    animation-delay: 0.3s;
+}
+
+.section:nth-of-type(5) {
+    animation-delay: 0.4s;
+}
+
+.section:nth-of-type(6) {
+    animation-delay: 0.5s;
+}
+
+.section:nth-of-type(odd) {
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--gold);
+    margin-bottom: clamp(16px, 2vw, 22px);
+    position: relative;
+    z-index: 1;
+}
+
+.section h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: rgba(245,194,66,0.85);
+    margin-top: 12px;
+    border-radius: 999px;
+}
+
+.section p,
+.section li {
+    color: var(--muted);
+}
+
+.grid {
+    display: grid;
+    gap: clamp(16px, 2vw, 24px);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+    background: rgba(12, 10, 8, 0.9);
+    border: 1px solid rgba(245, 194, 66, 0.18);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.22);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 32px 72px rgba(0, 0, 0, 0.28);
+    background: rgba(22, 18, 14, 0.95);
+    border-color: rgba(245, 194, 66, 0.28);
+}
+
+.card img {
+    width: 100%;
+    height: clamp(240px, 40vw, 340px);
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, rgba(245, 194, 66, 0.12), rgba(245, 194, 66, 0.04));
+}
+
+.card h3 {
+    margin: clamp(18px, 2vw, 22px) clamp(20px, 3vw, 28px) clamp(8px, 1.5vw, 12px);
+    color: #f5c242;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+}
+
+.card p {
+    color: #d8dfe8;
+    padding: 0 clamp(20px, 3vw, 28px) clamp(20px, 3vw, 28px);
+    line-height: 1.8;
+}
+
+.card p:last-child {
+    padding-bottom: clamp(24px, 4vw, 30px);
+}
+
+a.card.card-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+a.card.card-link:hover {
+    text-decoration: none;
+}
+
+.detail-section {
+    background: rgba(12, 10, 8, 0.95);
+    border: 1px solid rgba(245,194,66,0.16);
+    box-shadow: 0 30px 90px rgba(0,0,0,0.35);
+    padding: clamp(50px, 10vw, 90px) clamp(24px, 4vw, 40px);
+    margin-top: clamp(40px, 6vw, 60px);
+}
+
+.detail-section h2 {
+    color: #ffffff;
+    text-shadow: 0 0 18px rgba(245,194,66,0.18);
+}
+
+.detail-section p {
+    color: #d8dfe8;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+}
+
+.detail-section .detail-highlight {
+    background: rgba(245,194,66,0.08);
+    border-left: 4px solid rgba(245,194,66,0.9);
+    padding: 18px 22px;
+    border-radius: 18px;
+}
+
+.footer-note {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+footer {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: clamp(20px, 3vw, 30px) 0 clamp(10px, 2vw, 16px);
+    text-align: center;
+    color: var(--muted);
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: min(900px, calc(100% - 30px));
+    }
+
+    .grid {
+        gap: clamp(16px, 3vw, 24px);
+    }
+
+    .navbar {
+        padding: clamp(12px, 2vw, 18px) 0;
+        gap: clamp(12px, 2vw, 28px);
+    }
+
+    .nav-links {
+        gap: clamp(16px, 2vw, 28px);
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: min(700px, calc(100% - 24px));
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar {
+        padding: clamp(12px, 2vw, 18px) clamp(16px, 3vw, 20px);
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        margin: 0 clamp(16px, 3vw, 24px);
+        background: rgba(12, 10, 8, 0.96);
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px 18px 22px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.32s ease, opacity 0.32s ease, visibility 0.32s ease;
+        box-shadow: 0 25px 60px rgba(0,0,0,0.28);
+        border: 1px solid rgba(245,194,66,0.12);
+    }
+
+    .nav-links.open {
+        max-height: 520px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links a {
+        padding: 12px 0;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 0;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-content {
+        padding: clamp(80px, 15vw, 120px) clamp(16px, 3vw, 24px) clamp(40px, 10vw, 60px);
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        width: min(100%, calc(100% - 20px));
+    }
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(1.8rem, 6vw, 3.4rem);
+    }
+
+    .eyebrow {
+        font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+    }
+
+    .hero-copy p {
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .cta-group {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .cta-group .btn {
+        width: 100%;
+        padding: clamp(12px, 2vw, 14px) clamp(20px, 4vw, 30px);
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    .navbar .brand {
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: calc(100% - 16px);
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(1.6rem, 5vw, 2.8rem);
+    }
+
+    .btn {
+        padding: clamp(10px, 2vw, 12px) clamp(16px, 3vw, 24px);
+    }
+
+    .section {
+        padding: clamp(30px, 8vw, 50px) 0;
+    }
+
+    .nav-links {
+        font-size: 0.85rem;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-copy {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeInUp 0.9s ease both 0.2s;
+}
+
+.hero-copy h1 {
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow: 0 0 12px rgba(245,194,66,0.18), 0 0 28px rgba(245,194,66,0.08);
+    }
+    50% {
+        text-shadow: 0 0 18px rgba(245,194,66,0.28), 0 0 34px rgba(245,194,66,0.12);
+    }
+}
+
+@keyframes floatLight {
+    0% {
+        transform: translateX(-40%) translateY(-10%);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(40%) translateY(10%);
+        opacity: 0.45;
+    }
+    100% {
+        transform: translateX(-40%) translateY(-10%);
+        opacity: 0.3;
+    }
+}
+</style>
+
+</head>
+<body>
+<header id="home">
+    <div class="container">
+        <nav class="navbar">
+            <div class="brand">José Rizal</div>
+            <button class="menu-toggle" aria-label="Toggle navigation" type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="early-life.html">Early Life</a>
+                <a href="education.html">Education</a>
+                <a href="artist.html">Artist</a>
+                <a href="voice.html">Voice</a>
+                <a href="national.html">National</a>
+                <a href="noli.html">Noli</a>
+                <a href="el-filibusterismo.html">El Fili</a>
+                <a href="letters-essays.html">Letters</a>
+                <a href="poetry-journalism.html">Poetry</a>
+            </div>
+        </nav>
+        <div class="hero-content">
+            <div class="hero-copy">
+                <p class="eyebrow">1887 Timeline Event</p>
+                <h1>Noli Me Tangere Published</h1>
+                <p>Rizal's groundbreaking novel that exposed the ills of colonial society and awakened Filipino national consciousness.</p>
+                <div class="cta-group">
+                    <a href="#details" class="btn btn-primary">Learn More</a>
+                    <a href="home.html#timeline" class="btn btn-secondary">Back to Timeline</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main class="container">
+    <section id="details" class="section">
+        <h2>The Novel's Impact</h2>
+        <div class="grid grid-2">
+            <div class="card">
+                <img src="noli.png" alt="Noli Me Tangere">
+                <h3>Social Critique</h3>
+                <p>The novel criticized the abuses of the Spanish colonial government, the Catholic Church, and the ilustrado class. It portrayed the suffering of Filipinos under colonial rule.</p>
+            </div>
+            <div class="card">
+                <img src="bata.jpg" alt="Rizal Writing">
+                <h3>Rizal's Exile</h3>
+                <p>Published in Berlin in 1887, the book was banned in the Philippines. Rizal was forced into exile, marking the beginning of his life as a reformer.</p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <h2>Key Themes and Characters</h2>
+        <div class="detail-section">
+            <p>Noli Me Tangere introduced characters that symbolized different aspects of Philippine society. Juan Crisóstomo Ibarra represented the hope for reform, while María Clara embodied the suffering of women.</p>
+            <p>The novel's themes of injustice, corruption, and the need for education resonated deeply with Filipinos and inspired the Propaganda Movement.</p>
+            <div class="detail-highlight">
+                <p><strong>Key Events in 1887:</strong> Publication of Noli Me Tangere in Berlin. The novel became a catalyst for change, exposing colonial abuses and awakening national pride.</p>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <p class="footer-note">© 2026 A Tribute to the Legacy of José Rizal. This site aims to inspire and educate about the national hero.</p>
+</footer>
+<script>
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-links');
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+    menuToggle.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      menuToggle.classList.remove('open');
+    });
+  });
+}
+</script>
+</body>
+</html>
