@@ -503,6 +503,30 @@ footer {
     font-size: clamp(0.85rem, 1.5vw, 0.95rem);
 }
 
+.group-photo-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    height: 650px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(255, 140, 0, 0.25), 0 0 50px rgba(255, 140, 0, 0.18);
+    border: 1px solid rgba(245, 194, 66, 0.18);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.group-photo-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 40px 100px rgba(255, 140, 0, 0.35), 0 0 60px rgba(255, 140, 0, 0.28);
+}
+
+.group-photo {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    background: linear-gradient(135deg, rgba(245, 194, 66, 0.12), rgba(245, 194, 66, 0.04));
+}
+
 @media (max-width: 1024px) {
     .container {
         width: min(900px, calc(100% - 30px));
@@ -996,12 +1020,12 @@ footer {
         <p class="section-intro">A dedicated roster of students who created this tribute site through research, design, and teamwork.</p>
         <div class="member-section">
             <div class="member-card">
-                <img class="member-avatar" src="https://ui-avatars.com/api/?name=Rex+Bismanos&background=F5C242&color=08101E&size=256" alt="Rex Bismanos">
+                <img class="member-avatar" src="rex.jpg" alt="Rex Bismanos">
                 <h3>Rex Bismanos</h3>
                 <p>Leader</p>
             </div>
             <div class="member-card">
-                <img class="member-avatar" src="https://ui-avatars.com/api/?name=Aron+Lan+Binas&background=F5C242&color=08101E&size=256" alt="Aron Lan Binas">
+                <img class="member-avatar" src="aron.jpg" alt="Aron Lan Binas">
                 <h3>Aron Lan Efraem A Binas</h3>
                 <p>Member</p>
             </div>
@@ -1060,6 +1084,12 @@ footer {
                 <h3>Trixie Hernandez</h3>
                 <p>Member</p>
             </div>
+        </div>
+    </section>
+    <section id="group-photo" class="section">
+        <h2>Group Picture</h2>
+        <div class="group-photo-container">
+            <img src="bidabida.jpg" alt="Team Group Picture" class="group-photo">
         </div>
     </section>
 </main>
